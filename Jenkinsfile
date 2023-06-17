@@ -1,6 +1,10 @@
 pipeline {
     agent any
-
+    environment {
+         REMOTE_SERVER_CREDENTIALS = credentials('REMOTE_SERVER_CREDENTIALS')
+         REMOTE_SERVER_USERNAME = "${tvya4c9bs13u}"
+         REMOTE_SERVER_PASSWORD = "${%TGBnhy6}"
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -36,7 +40,8 @@ pipeline {
                 // Example deployment commands:
                 // bat 'npm run deploy'
                 // or
-                bat 'xcopy /C /Y build* "\\\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co\\public"'
+                bat "xcopy /C /Y build\\* \"\\\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co\" /user:${REMOTE_SERVER_USERNAME} /password:${REMOTE_SERVER_PASSWORD}"
+                // bat 'xcopy /C /Y build* "\\\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co\\public"'
                 // Adjust the deployment commands based on your deployment setup
             }
         }
