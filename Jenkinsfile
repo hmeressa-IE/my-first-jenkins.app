@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
          REMOTE_SERVER_CREDENTIALS = credentials('REMOTE_SERVER_CREDENTIALS')
-         REMOTE_SERVER_USERNAME = "${tvya4c9bs13u}"
-         REMOTE_SERVER_PASSWORD = "${%TGBnhy6}"
+         REMOTE_SERVER_USERNAME = 'tvya4c9bs13u'
+         REMOTE_SERVER_PASSWORD = '%TGBnhy6'
     }
     stages {
         stage('Checkout') {
