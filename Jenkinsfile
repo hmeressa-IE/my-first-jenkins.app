@@ -19,27 +19,27 @@ pipeline {
         stage('Build Application') {
             steps {
                 // Build the React.js application
-                sh 'npm run build'
+                bat 'npm run build'
             }
         }
 
         stage('Test Application') {
             steps {
                 // Run tests for the React.js application
-                sh 'npm run test'
+                bat 'npm run test'
             }
         }
 
-        stage('Deploy Application') {
-            steps {
-                // Deploy the built application to your server or hosting platform
-                // Example deployment commands:
-                sh 'npm run deploy'
-                // or
-                sh 'rsync -avz build/ user@example.com:/var/www/html'
-                // Adjust the deployment commands based on your deployment setup
-            }
-        }
+        // stage('Deploy Application') {
+        //     steps {
+        //         // Deploy the built application to your server or hosting platform
+        //         // Example deployment commands:
+        //         bat 'npm run deploy'
+        //         // or
+        //         sh 'rsync -avz build/ user@example.com:/var/www/html'
+        //         // Adjust the deployment commands based on your deployment setup
+        //     }
+        // }
     }
 
     post {
