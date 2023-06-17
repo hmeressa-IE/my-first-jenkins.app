@@ -19,11 +19,5 @@ pipeline {
         sh 'npm run build'
       }
     }
-
-    stage('Archive Build Artifacts') {
-      steps {
-        archiveArtifacts artifacts: 'build/**'
-      }
-    }
   }
 }
