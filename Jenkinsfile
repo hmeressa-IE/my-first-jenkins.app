@@ -44,7 +44,7 @@ pipeline {
                 // or
                 scp your_file username@server_ip:~/destination_directory/
 
-                bat 'scp build/ tvya4c9bs13u@92.204.208.100:~/public_html/scm-back-test.co.ienetworks.co/public'
+                bat 'scp build/ tvya4c9bs13u\@92.204.208.100:/public_html/scm-back-test.co.ienetworks.co/public'
                 // Adjust the deployment commands based on your deployment setup
             }
         }
