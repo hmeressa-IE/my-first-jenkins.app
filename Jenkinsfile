@@ -3,10 +3,10 @@ pipeline {
 
     environment {
         FTP_SERVER_CREDENTIALS = credentials('FTP_SERVER_CREDENTIALS')
-        FTP_SERVER_USERNAME = "tvya4c9bs13u"
-        FTP_SERVER_PASSWORD = "%TGBnhy6"
-        FTP_SERVER_HOST = '92.204.208.100'
-        FTP_SERVER_PORT = 2083
+        // FTP_SERVER_USERNAME = "tvya4c9bs13u"
+        // FTP_SERVER_PASSWORD = "%TGBnhy6"
+        // FTP_SERVER_HOST = '92.204.208.100'
+        // FTP_SERVER_PORT = 2083
     }
 
     // environment {
