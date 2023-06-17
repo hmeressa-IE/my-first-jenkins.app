@@ -1,10 +1,19 @@
 pipeline {
     agent any
+
     environment {
-         REMOTE_SERVER_CREDENTIALS = credentials('REMOTE_SERVER_CREDENTIALS')
-         REMOTE_SERVER_USERNAME = 'tvya4c9bs13u'
-         REMOTE_SERVER_PASSWORD = '%TGBnhy6'
+        FTP_SERVER_CREDENTIALS = credentials('FTP_SERVER_CREDENTIALS')
+        FTP_SERVER_USERNAME = "tvya4c9bs13u"
+        FTP_SERVER_PASSWORD = "%TGBnhy6"
+        FTP_SERVER_HOST = '92.204.208.100'
+        FTP_SERVER_PORT = 2083
     }
+
+    // environment {
+    //      REMOTE_SERVER_CREDENTIALS = credentials('REMOTE_SERVER_CREDENTIALS')
+    //      REMOTE_SERVER_USERNAME = 'tvya4c9bs13u'
+    //      REMOTE_SERVER_PASSWORD = '%TGBnhy6'
+    // }
     stages {
         stage('Checkout') {
             steps {
@@ -40,7 +49,8 @@ pipeline {
                 // Example deployment commands:
                 // bat 'npm run deploy'
                 // or
-                bat "xcopy /C /Y build\\* \"\\\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co\" /user:${REMOTE_SERVER_USERNAME} /password:${REMOTE_SERVER_PASSWORD}"
+                bat "lftp -e \"open -u ${FTP_SERVER_USERNAME},${FTP_SERVER_PASSWORD} ${FTP_SERVER_HOST} -p ${FTP_SERVER_PORT}; mirror -R build /public_html/scm-back-test.co.ienetworks.co; quit\""
+                // bat "xcopy /C /Y build\\* \"\\\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co\" /user:${REMOTE_SERVER_USERNAME} /password:${REMOTE_SERVER_PASSWORD}"
                 // bat 'xcopy /C /Y build* "\\\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co\\public"'
                 // Adjust the deployment commands based on your deployment setup
             }
