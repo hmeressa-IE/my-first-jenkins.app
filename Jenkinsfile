@@ -106,8 +106,7 @@ stage('Deploy to cPanel') {
       )
     }
   }
-
-
+}
     post {
         success {
             // Actions to perform when the pipeline is successful
