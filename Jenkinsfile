@@ -84,8 +84,8 @@ stage('Deploy to cPanel') {
           //     }
           //   }
           // }
-        }
-}
+//         }
+// }
 
     // // post {
     //     success {
