@@ -37,15 +37,26 @@ pipeline {
         // }
 
         stage('Deploy Application') {
-            steps {
-                // Deploy the built application to your server or hosting platform
-                // Example deployment commands:
-                // bat 'npm run deploy'
-                // or
-                bat 'xcopy /C /Y build* "Z:\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co\\"'
-                // bat 'xcopy /C /Y build* "\\\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co"'
-                // Adjust the deployment commands based on your deployment setup
-            }
+             ftpPublisher(
+                configName: 'FTP_SERVER_CREDENTIALS',
+                    transfers: [
+                    // Upload files from the workspace to the destination directory on cPanel
+                        [
+                            sourceFiles: 'build/**', 'scm-back-test.co.ienetworks.co', // Specify the path to your build files
+                            remoteDirectory: 'public_html',  // Destination directory on cPanel
+                            flatten: false  // Preserve directory structure when uploading
+                        ]
+                ]
+            )
+            // steps {
+            //     // Deploy the built application to your server or hosting platform
+            //     // Example deployment commands:
+            //     // bat 'npm run deploy'
+            //     // or
+            //     bat 'xcopy /C /Y build* "Z:\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co\\"'
+            //     // bat 'xcopy /C /Y build* "\\\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co"'
+            //     // Adjust the deployment commands based on your deployment setup
+            // }
         }
     }
 
