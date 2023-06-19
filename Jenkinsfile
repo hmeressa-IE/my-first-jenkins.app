@@ -43,7 +43,7 @@ pipeline {
                             publishers: [
                                 // Configure FTP server details
                                 [
-                                    // $class: 'FTPTransfer', 
+                                    $class: 'jenkins.plugins.publish_over_ftp.BapFtpPublisherPlugin', 
                                     ftpConfigName: 'FTP_SERVER_CREDENTIALS',
                                     includes: 'build/**',  // Specify the path to your build files
                                     remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co/',  // Destination directory on cPanel
