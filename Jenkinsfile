@@ -28,6 +28,7 @@ pipeline {
       
   stage('Deploy to cPanel') {
       steps {
+        script {
         ftpPublisher(
           failOnError: true,
           alwaysPublishFromMaster: false,
@@ -38,7 +39,6 @@ pipeline {
               transfers: [
                 [
                   transferSetSource: 'build/**', // Path to the build directory
-                  transferSetRemovePrefix: 'build',
                   remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co' // Destination directory on cPanel
                 ]
               ],
@@ -48,6 +48,8 @@ pipeline {
             ]
           ]
         )
+        }
+      }
       }
     }
 
