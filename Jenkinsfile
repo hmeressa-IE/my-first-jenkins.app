@@ -54,7 +54,7 @@ pipeline {
               usePromotionBuildChooser: false
             ]
           ]
-        // ]
+        ]
         )
         }
       }
