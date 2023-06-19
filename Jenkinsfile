@@ -53,17 +53,17 @@ pipeline {
             }
           }
 
-    // post {
-        success {
-            // Actions to perform when the pipeline is successful
-            echo 'Pipeline succeeded!'
-            // Additional actions like sending notifications or triggering other jobs can be added here
-        }
+    // // post {
+    //     success {
+    //         // Actions to perform when the pipeline is successful
+    //         echo 'Pipeline succeeded!'
+    //         // Additional actions like sending notifications or triggering other jobs can be added here
+    //     }
 
-        failure {
-            // Actions to perform when the pipeline fails
-            echo 'Pipeline failed!'
-            // Additional actions like sending notifications or triggering other jobs can be added here
-        }
-      }
-      }
+    //     failure {
+    //         // Actions to perform when the pipeline fails
+    //         echo 'Pipeline failed!'
+    //         // Additional actions like sending notifications or triggering other jobs can be added here
+    //     }
+    //   }
+    //   }
