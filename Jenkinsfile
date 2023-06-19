@@ -42,7 +42,7 @@ pipeline {
                 // Example deployment commands:
                 // bat 'npm run deploy'
                 // or
-                xcopy /C /Y build* "Z:\\public_html\\scm-back-test.co.ienetworks.co"
+                bat 'xcopy /C /Y build* "Z:\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co"'
                 // bat 'xcopy /C /Y build* "\\\\92.204.208.100\\public_html\\scm-back-test.co.ienetworks.co"'
                 // Adjust the deployment commands based on your deployment setup
             }
