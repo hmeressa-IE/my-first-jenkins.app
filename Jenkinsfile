@@ -37,21 +37,21 @@ pipeline {
         // }
 
         stage('Deploy to cPanel') {
-  steps {
-    script {
-      ftpPublisher(
-        publishers: [
-          // Configure FTP server details
-          [$class: 'FTPTransfer', 
-           ftpConfigName: 'FTP_SERVER_CREDENTIALS',
-           includes: 'build/**',  // Specify the path to your build files
-           remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co/',  // Destination directory on cPanel
-        //    removePrefix: 'build'  // Optional: Remove a specific prefix from the file path
-          ]
-        ]
-      )
-    }
-  }
+                steps {
+                    script {
+                        ftpPublisher(
+                            publishers: [
+                                // Configure FTP server details
+                                [
+                                    $class: 'FTPTransfer', 
+                                    ftpConfigName: 'FTP_SERVER_CREDENTIALS',
+                                    includes: 'build/**',  // Specify the path to your build files
+                                    remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co/',  // Destination directory on cPanel
+                                ]
+                            ]
+                        )
+                    }
+        }
 }
 
 
