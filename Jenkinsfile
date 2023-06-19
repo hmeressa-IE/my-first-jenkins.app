@@ -38,7 +38,7 @@ pipeline {
 
         stage('Deploy to cPanel') {
                 steps {
-                    script {
+                    // script {
                         ftpPublisher(
                             publishers: [
                                 // Configure FTP server details
@@ -50,7 +50,7 @@ pipeline {
                                 ]
                             ]
                         )
-                    }
+                    // }
                 }
         }
     }
