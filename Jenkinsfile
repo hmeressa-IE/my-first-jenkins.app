@@ -106,7 +106,6 @@ stage('Deploy to cPanel') {
       )
     }
   }
-}
 
 
     post {
