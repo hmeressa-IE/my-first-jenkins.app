@@ -39,7 +39,7 @@ pipeline {
               transfers: [
                 [
                   sourceFiles: 'build/**', // Path to the build directory
-                  remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co' // Destination directory on cPanel
+                  // remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co' // Destination directory on cPanel
                 ]
               ],
               useWorkspaceInPromotion: false,
