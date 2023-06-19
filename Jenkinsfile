@@ -29,7 +29,7 @@ pipeline {
   stage('Deploy to cPanel') {
       steps {
         script {
-        ftpPublisher(
+        publishFTP(
           failOnError: true,
           alwaysPublishFromMaster: false,
           continueOnError: false,
@@ -38,6 +38,7 @@ pipeline {
               configName: 'FTP_SERVER_CREDENTIALS', // The name of your FTP server configuration in Jenkins
               transfers: [
                 [
+                  // sourceDirectory: 'build',
                   transferSetSourceFiles: '**/*', // Path to the build directory
                   remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co' // Destination directory on cPanel
                 ]
