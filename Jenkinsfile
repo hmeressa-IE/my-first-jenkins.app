@@ -26,27 +26,52 @@ pipeline {
             }
           }
       
-stage('Deploy to cPanel') {
+  stage('Deploy to cPanel') {
       steps {
-        ftpPublisher(publishers: [
-          ftpPublisherConfig(
-            configName: 'FTP_SERVER_CREDENTIALS', // The name of your FTP server configuration in Jenkins
-            transfers: [
-              ftpTransfer(
-                cleanRemote: false,
-                excludes: '',
-                flatten: false,
-                makeEmptyDirs: false,
-                noDefaultExcludes: false,
-                patternSeparator: '[, ]',
-                remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co', // Destination directory on cPanel
-                sourceDirectory: 'build' // Path to the build directory
-              )
+        ftpPublisher(
+          failOnError: true,
+          alwaysPublishFromMaster: false,
+          continueOnError: false,
+          publishers: [
+            [
+              configName: 'FTP_SERVER_CREDENTIALS', // The name of your FTP server configuration in Jenkins
+              transfers: [
+                [
+                  transferSetSource: 'build/**', // Path to the build directory
+                  transferSetRemovePrefix: 'build',
+                  remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co' // Destination directory on cPanel
+                ]
+              ],
+              useWorkspaceInPromotion: false,
+              usePromotionTimestamp: false,
+              usePromotionBuildChooser: false
             ]
-          )
-        ])
+          ]
+        )
       }
     }
+
+// stage('Deploy to cPanel') {
+//       steps {
+//         ftpPublisher(publishers: [
+//           ftpPublisherConfig(
+//             configName: 'FTP_SERVER_CREDENTIALS', // The name of your FTP server configuration in Jenkins
+//             transfers: [
+//               ftpTransfer(
+//                 cleanRemote: false,
+//                 excludes: '',
+//                 flatten: false,
+//                 makeEmptyDirs: false,
+//                 noDefaultExcludes: false,
+//                 patternSeparator: '[, ]',
+//                 remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co', // Destination directory on cPanel
+//                 sourceDirectory: 'build' // Path to the build directory
+//               )
+//             ]
+//           )
+//         ])
+//       }
+//     }
   }
 }
 
