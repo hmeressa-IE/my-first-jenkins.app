@@ -37,13 +37,13 @@ pipeline {
           [
             [
               [
-                $class: 'jenkins.plugins.publish_over_ftp.BapFtpPublisher',
+                // $class: 'jenkins.plugins.publish_over_ftp.BapFtpPublisher',
                 configName: 'FTP_SERVER_CREDENTIALS', // The name of your FTP server configuration in Jenkins
                 transfers: 
               [
                 [
                   [
-                    $class: 'jenkins.plugins.publish_over_ftp.BapFtpTransfer', 
+                    // $class: 'jenkins.plugins.publish_over_ftp.BapFtpTransfer', 
                     sourceFiles: '**', // Path to the build directory
 
                 ]
@@ -54,7 +54,7 @@ pipeline {
               usePromotionBuildChooser: false
             ]
           ]
-        ]
+        // ]
         )
         }
       }
