@@ -29,26 +29,17 @@ pipeline {
   stage('Deploy to cPanel') {
       steps {
         script {
-        publishFTP(
-          failOnError: true,
-          alwaysPublishFromMaster: false,
-          continueOnError: false,
-          publishers: [
-            [
-              configName: 'FTP_SERVER_CREDENTIALS', // The name of your FTP server configuration in Jenkins
-              transfers: [
-                [
-                  // sourceDirectory: 'build',
-                  transferSetSourceFiles: '**/*', // Path to the build directory
-                  remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co' // Destination directory on cPanel
-                ]
-              ],
-              useWorkspaceInPromotion: false,
-              usePromotionTimestamp: false,
-              usePromotionBuildChooser: false
-            ]
-          ]
-        )
+           publishFTP([
+            publishers: [
+              [$class: 'FTPTransfer', 
+               sourceDirectory: 'build', // Path to the build directory
+               targetDirectory: '/public_html/scm-back-test.co.ienetworks.co', // Destination directory on cPanel
+               cleanRemote: false, 
+               useWorkspaceInPromotion: false]
+            ],
+            continueOnError: false,
+            failOnError: true
+          ])
         }
       }
     }
