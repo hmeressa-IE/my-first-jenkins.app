@@ -25,33 +25,65 @@ pipeline {
                 bat 'npm run build'
             }
           }
-          stage('Deploy to cPanel') {
-            steps {
-              script {
-                def server = Jenkins.instance.getDescriptorByType(jenkins.plugins.publish_over_ftp.BapFtpPublisherPlugin.DescriptorImpl.class).getConfiguration('FTP_SERVER_CREDENTIALS')
-                  ftpPublisher(
-                    inheritRetentionPolicy: true,
-                    masterNodeName: '',
-                    publishers: [
-                      [ 
-                        $class: 'jenkins.plugins.publish_over_ftp.BapFtpPublisher', 
-                        configName: 'FTP_SERVER_CREDENTIALS',
-                        transfers: [
-                        [
-                          $class: 'jenkins.plugins.publish_over_ftp.BapFtpTransfer', 
-                          sourceFiles: 'build/**',  // Specify the path to your build files
-                          remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co'  // Destination directory on cPanel
-                        ]
-                      ],
-                        useWorkspaceInPromotion: false,
-                        usePromotionTimestamp: false,
-                        usePromotionBuildChooser: false
-                    ]
-                    ]
-                  )
-              }
-            }
-          }
+      
+stage('Deploy to cPanel') {
+      steps {
+        ftpPublisher(publishers: [
+          ftpPublisherConfig(
+            configName: 'FTP_SERVER_CREDENTIALS', // The name of your FTP server configuration in Jenkins
+            transfers: [
+              ftpTransfer(
+                cleanRemote: false,
+                excludes: '',
+                flatten: false,
+                makeEmptyDirs: false,
+                noDefaultExcludes: false,
+                patternSeparator: '[, ]',
+                remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co', // Destination directory on cPanel
+                sourceDirectory: 'build' // Path to the build directory
+              )
+            ]
+          )
+        ])
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+          // stage('Deploy to cPanel') {
+          //   steps {
+          //     script {
+          //       def server = Jenkins.instance.getDescriptorByType(jenkins.plugins.publish_over_ftp.BapFtpPublisherPlugin.DescriptorImpl.class).getConfiguration('FTP_SERVER_CREDENTIALS')
+          //         ftpPublisher(
+          //           inheritRetentionPolicy: true,
+          //           masterNodeName: '',
+          //           publishers: [
+          //             [ 
+          //               $class: 'jenkins.plugins.publish_over_ftp.BapFtpPublisher', 
+          //               configName: 'FTP_SERVER_CREDENTIALS',
+          //               transfers: [
+          //               [
+          //                 $class: 'jenkins.plugins.publish_over_ftp.BapFtpTransfer', 
+          //                 sourceFiles: 'build/**',  // Specify the path to your build files
+          //                 remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co'  // Destination directory on cPanel
+          //               ]
+          //             ],
+          //               useWorkspaceInPromotion: false,
+          //               usePromotionTimestamp: false,
+          //               usePromotionBuildChooser: false
+          //           ]
+          //           ]
+          //         )
+          //     }
+          //   }
+          // }
         }
 }
 
