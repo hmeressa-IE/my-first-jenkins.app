@@ -51,8 +51,9 @@ pipeline {
                             ]
                         )
                     }
+                }
         }
-}
+    }
 
 
 //         stage('Deploy Application') {
