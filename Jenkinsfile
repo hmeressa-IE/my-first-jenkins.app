@@ -37,17 +37,18 @@ pipeline {
         // }
 
         stage('Deploy Application') {
-             ftpPublisher(
-                configName: 'FTP_SERVER_CREDENTIALS',
-                    transfers: [
-                    // Upload files from the workspace to the destination directory on cPanel
-                        [
-                            sourceFiles: 'build/**', // Specify the path to your build files
-                            remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co',  // Destination directory on cPanel
-                            flatten: false  // Preserve directory structure when uploading
+            steps {
+                ftpPublisher(
+                    configName: 'FTP_SERVER_CREDENTIALS',
+                        transfers: [
+                        // Upload files from the workspace to the destination directory on cPanel
+                            [
+                                sourceFiles: 'build/**', // Specify the path to your build files
+                                remoteDirectory: '/public_html/scm-back-test.co.ienetworks.co',  // Destination directory on cPanel
+                                flatten: false  // Preserve directory structure when uploading
+                            ]
                         ]
-                ]
-            )
+                )
             // steps {
             //     // Deploy the built application to your server or hosting platform
             //     // Example deployment commands:
