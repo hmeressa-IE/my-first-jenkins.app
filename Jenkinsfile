@@ -38,7 +38,7 @@ pipeline {
                               $class: 'jenkins.plugins.publish_over_ftp.BapFtpTransfer',
                               sourceFiles: 'build/**', // Path to the build directory or specific build file(s)
                               // remoteDirectory: '/public_html/front-end-test', // Destination directory on cPanel
-                              removePrefix: 'build/', // Remove the 'build' prefix from the remote directory structure
+                              // removePrefix: 'build/', // Remove the 'build' prefix from the remote directory structure
                               flatten: true // Flatten the directory structure on the remote server
                             ] 
                         ],
