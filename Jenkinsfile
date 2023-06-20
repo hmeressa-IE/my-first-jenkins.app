@@ -35,7 +35,7 @@ pipeline {
                           configName: 'frontend', // The name of your FTP server configuration in Jenkins
                           transfers: [
                             [
-                              sourceFiles: '*/**', // Path to the build directory
+                              sourceFiles: 'build/**', // Path to the build directory
                             ] 
                         ],
                             useWorkspaceInPromotion: false,
