@@ -36,7 +36,6 @@ pipeline {
                           transfers: [
                             [
                               sourceFiles: 'build/**', // Path to the build directory
-                              removePrefix: 'build'
                             ] 
                         ],
                             useWorkspaceInPromotion: false,
