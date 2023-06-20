@@ -35,8 +35,8 @@ pipeline {
                           configName: 'FTP_SERVER_CREDENTIALS', // The name of your FTP server configuration in Jenkins
                           transfers: [
                             [
-                              sourceFiles: 'C:\\ProgramData\\Jenkins\\.jenkins\workspace\\my-first-jenkins-app-pipeline\\build/**', // Path to the build directory
-                              removePrefix: 'C:\\ProgramData\\Jenkins\\.jenkins\workspace\\my-first-jenkins-app-pipeline\\build'
+                              sourceFiles: 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\my-first-jenkins-app-pipeline\\build/**', // Path to the build directory
+                              removePrefix: 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\my-first-jenkins-app-pipeline\\build'
                             ] 
                         ],
                             useWorkspaceInPromotion: false,
