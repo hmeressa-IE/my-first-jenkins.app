@@ -22,7 +22,7 @@ pipeline {
             bat 'npm run build'
           }
         }
-      
+      //used for deploy the the remote server
         stage('Deploy to cPanel') {
           steps {
             script {
@@ -37,7 +37,7 @@ pipeline {
                             [
                               sourceFiles: 'build/**', // Path to the build directory
                               removePrefix: 'build'
-                            ]
+                            ] 
                         ],
                             useWorkspaceInPromotion: false,
                             usePromotionTimestamp: false,
