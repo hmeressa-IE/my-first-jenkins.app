@@ -22,7 +22,7 @@ pipeline {
             bat 'npm run build'
           }
         }
-      //used for deploy the the remote server
+      //used for deploy the the remote serve
         stage('Deploy to cPanel') {
           steps {
             script {
@@ -32,11 +32,11 @@ pipeline {
                     continueOnError: false,
                       publishers: [
                         [
-                          configName: 'fronend', // The name of your FTP server configuration in Jenkins
+                          configName: 'FTP_SERVER_CREDENTIALS', // The name of your FTP server configuration in Jenkins
                           transfers: [
                             [
-                              sourceFiles: '*/**', // Path to the build directory
-                              // removePrefix: ''
+                              sourceFiles: 'build/**', // Path to the build directory
+                              removePrefix: 'build'
                             ] 
                         ],
                             useWorkspaceInPromotion: false,
@@ -49,7 +49,7 @@ pipeline {
          }
         }
     }
-    //  when {
-    //     changeset "**"
-    // }
+     when {
+        changeset "**"
+    }
 }
