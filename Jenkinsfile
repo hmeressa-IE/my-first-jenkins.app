@@ -40,8 +40,6 @@ pipeline {
                               remoteDirectory: '/public_html/front-end-test', // Destination directory on cPanel
                               removePrefix: 'build', // Remove the 'build' prefix from the remote directory structure
                               flatten: true // Flatten the directory structure on the remote server
-              ]
-
                             ] 
                         ],
                             useWorkspaceInPromotion: false,
