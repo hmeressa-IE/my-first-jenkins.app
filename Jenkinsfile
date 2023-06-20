@@ -32,10 +32,10 @@ pipeline {
                     continueOnError: false,
                       publishers: [
                         [
-                          configName: 'fronend', // The name of your FTP server configuration in Jenkins
+                          configName: 'frontend', // The name of your FTP server configuration in Jenkins
                           transfers: [
                             [
-                              sourceFiles: 'build/**', // Path to the build directory
+                              sourceFiles: '*/**', // Path to the build directory
                             ] 
                         ],
                             useWorkspaceInPromotion: false,
