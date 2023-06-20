@@ -35,8 +35,8 @@ pipeline {
                           configName: 'fronend', // The name of your FTP server configuration in Jenkins
                           transfers: [
                             [
-                              sourceFiles: '**',
-                              excludePattern: 'build/**'
+                              sourceFiles: 'build/**',
+                              // excludePattern: 'build/**'
                               // sourceFiles: '*/**', // Path to the build directory
                               // removePrefix: ''
                             ] 
