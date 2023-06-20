@@ -35,7 +35,9 @@ pipeline {
                           configName: 'FTP_SERVER_CREDENTIALS', // The name of your FTP server configuration in Jenkins
                           transfers: [
                             [
-                              sourceFiles: 'build/* -d', // Path to the build directory
+                              includePattern: '**',
+                              excludePattern: 'build/**'
+                              // sourceFiles: '*/**', // Path to the build directory
                               // removePrefix: ''
                             ] 
                         ],
