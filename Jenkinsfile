@@ -49,7 +49,4 @@ pipeline {
          }
         }
     }
-     when {
-        changeset "**"
-    }
 }
