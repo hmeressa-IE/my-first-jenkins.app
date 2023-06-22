@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        recipientEmails = "hmkahsay@gmail.com, gsharewz@gmail.com"
+    }
       stages {
 
         stage('Checkout') {
@@ -48,6 +51,13 @@ pipeline {
               )
             }
          }
+        }
+    }
+     post{
+        always{
+            mail to: "${recipientEmails}",
+            subject: "Test Email",
+            body: "Test"
         }
     }
 }
